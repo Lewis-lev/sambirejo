@@ -1,0 +1,38 @@
+li a[href="contact"] {
+  color: white;
+}
+
+img {
+  margin: auto;
+  display: block;
+
+  width: 1000px;
+}
+
+.content {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.content > * {
+  flex: 1;
+}
+
+.content .sosmed {
+  font-size: 20px;
+  font-weight: lighter;
+
+}
+
+.content .fa-brands {
+  font-size: 25px;
+  font-weight: normal;
+
+}
+
+.content a {
+  text-decoration: none;
+  color: black;
+}

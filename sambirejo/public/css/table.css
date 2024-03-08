@@ -1,0 +1,52 @@
+.bold {
+    font-weight: bold;
+}
+
+ul .logout {
+    background-color: rgb(24, 186, 255);
+    color: white;
+    border-radius: 5px;
+    width: 7rem;
+}
+
+body {
+    margin: 0;
+}
+
+.table-container {
+    margin: auto;
+    margin-top: 10vh;
+    width: 100%;
+}
+
+table tr {
+    height: 4rem;
+}
+
+table a {
+    text-decoration: none;
+}
+
+table .status {
+    display: block;
+}
+
+table .status a {
+    margin: 1px;
+    width: 10rem !important;
+}
+
+.center {
+    display: block;
+    margin: auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    min-height: 100vh;
+}
+.footer {
+    grid-row-start: 2;
+    width: 100%;
+}

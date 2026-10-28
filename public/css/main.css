@@ -1,0 +1,292 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: hsl(208, 100%, 96%);
+}
+
+.foto-wrapper {
+  display: none;
+  background-color: #0770cd;
+  margin-bottom: 5rem;
+}
+
+.foto {
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  scroll-behavior: smooth;
+}
+
+.foto-wrapper .foto .card {
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.foto-wrapper .foto .card img {
+  width: auto;
+  height: 200px;
+}
+
+.foto-wrapper .foto .card {
+  display: inline-block;
+}
+
+.slide-button {
+  text-align: center;
+}
+
+.slide-button button {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.slide-button button:hover {
+  cursor: pointer;
+}
+
+/* .upper-wrapper {
+  background-color: #75b7f1;
+} */
+
+.video-wrapper {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.video-wrapper video {
+  /* flex-grow: 1; */
+  height: 300px;
+}
+
+.pesan-wrapper {
+  display: flex;
+  justify-content: center;
+
+  margin: auto;
+  margin-bottom: 2rem;
+
+  width: 95%;
+}
+
+.pesan-wrapper .kiri {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 1px 2px 1px grey;
+
+  border-radius: 5px;
+  overflow-y: scroll;
+
+  width: 30%;
+  height: 400px;
+}
+
+.pesan-wrapper .kanan {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 1px 2px 1px grey;
+
+  width: 70%;
+  height: 400px;
+  border-radius: 5px;
+
+}
+
+.aktivitas {
+  background-image: url("../img/bg-aktivitas.webp");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: rgb(135, 135, 135) solid 1px;
+
+  width: 95%;
+  margin: auto;
+  height: 400px;
+  border-radius: 5px;
+}
+
+.aktivitas h2 {
+  text-align: center;
+  margin-top: 2rem;
+  color: white;
+}
+
+.agenda-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+.agenda-wrapper .card1 {
+  background-image: url('../img/agenda/agenda_1.webp');
+}
+
+.agenda-wrapper .card2 {
+  background-image: url('../img/agenda/agenda_3.webp');
+}
+
+.agenda-wrapper .card3 {
+  background-image: url('../img/agenda/agenda_2.webp');
+}
+
+.agenda-card {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 400px;
+  background-color: rgb(167, 167, 167);
+
+  margin-top: 40px;
+  border: solid 1px #b2bec3;
+  border-radius: 3px;
+  width: 400px;
+  height: 200px
+}
+
+.agenda-card:hover {
+  cursor: pointer;
+}
+
+.content-wrapper {
+  margin-top: 40px;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: hidden; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+
+.caption {
+  background-color: #3143e0;
+  margin: auto;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 60px;
+  height: 200px;
+  width: 60%;
+}
+
+.caption p {
+  text-align: justify;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.8;
+}
+
+
+.content-wrapper .name {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.foto-content {
+  margin: auto;
+  max-width: 970px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  scroll-behavior: smooth;
+}
+
+.foto-content .card {
+  display: inline-block;
+  outline: none;
+  border: none;
+}
+
+.foto-content .card .text {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.foto-content .card img {
+  width: auto;
+  height: 200px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.content-button {
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+
+  width: 80%;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.content-button button {
+  flex-shrink: 0;
+
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.content-button button:hover {
+  cursor: pointer;
+}
+
+.content-button button:nth-last-child(1) {
+  margin-left: auto;
+}
+
+.dialog {
+  max-width: 70%;
+  border: 2px black solid;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.dialog::backdrop {
+  background: rgb(0,0,0 / .4);
+}
+
+.dialog .desk {
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+.dialog h2{
+  text-align: center;
+}
+
+@media (max-width: 1120px) {
+  .agenda-card {
+    margin-top: 40px;
+    border: solid 1px #b2bec3;
+    border-radius: 3px;
+    width: 300px;
+    height: 200px
+  }
+}
+
+@media (max-width: 970px) {
+  .agenda-card {
+    margin-top: 40px;
+    border: solid 1px #b2bec3;
+    border-radius: 3px;
+    width: 200px;
+    height: 200px
+  }
+}

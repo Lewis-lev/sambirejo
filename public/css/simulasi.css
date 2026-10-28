@@ -1,0 +1,70 @@
+table {
+    border-collapse: collapse;
+    border: 2px solid #0097e6; 
+
+    margin: auto;
+    margin-top: 3rem;
+
+    width: 90%;
+
+    font-size: 20px;
+}
+
+table tr {
+    height: 3rem;
+}
+
+form input, form select {
+    font-size: 18px;
+
+    outline: none;
+    border: none;
+
+    height: 40px;
+    width: 100%;
+}
+
+
+
+#jml_ung::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.button {
+    margin-top: 5vh;
+}
+
+.btn-cart {
+    width: 300px !important;
+}
+
+.button-b {
+    display: block;
+    margin: auto;
+
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(224, 219, 219);
+    box-shadow: 1px 2px 2px 1px grey;
+
+    width: 200px;
+    height: 60px;
+
+    cursor: pointer;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+
+    font-size: 18px;
+    
+    cursor: pointer;
+}

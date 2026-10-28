@@ -1,0 +1,14 @@
+li a[href="lokasi"] {
+    color: white;
+  }
+
+.text {
+  text-align: center;
+  font-weight: bold;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+

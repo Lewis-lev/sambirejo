@@ -42,6 +42,8 @@
 .orders-toolbar p { margin: 0; color: #89938b; font-size: 11px; }
 .admin-danger-link { display: inline-flex; align-items: center; gap: 6px; padding: 9px 12px; border: 1px solid #f0ddd5; border-radius: 8px; color: #a55236; font-size: 11px; font-weight: 700; text-decoration: none; white-space: nowrap; }
 .admin-danger-link:hover { background: #fff2ec; }
+.admin-action-form { display: inline; margin: 0; }
+.admin-danger-link, .status-pill, .delete-order { font-family: inherit; cursor: pointer; }
 .admin-table-scroll { width: 100%; padding: 0 20px 14px; overflow-x: auto; }
 .admin-table { width: 100% !important; border-collapse: collapse !important; border: 0 !important; color: #35443a !important; font-family: "DM Sans", sans-serif !important; font-size: 11px !important; }
 .admin-table thead th { padding: 12px 10px !important; border: 0 !important; border-top: 1px solid #eff0eb !important; border-bottom: 1px solid #e9ebe5 !important; background: #fafbf8 !important; color: #839087 !important; font-size: 9px !important; font-weight: 800 !important; letter-spacing: .06em; text-align: left !important; text-transform: uppercase; white-space: nowrap; }
@@ -64,7 +66,7 @@
 .is-neutral { border-color: #e0e8e0; background: #f2f5f0; color: #68786b; }
 .order-actions { min-width: 108px; white-space: nowrap; }
 .order-actions .status-pill { margin-right: 5px; }
-.delete-order { display: inline-grid; width: 26px; height: 26px; place-items: center; border: 1px solid #f1e3df; border-radius: 8px; color: #a45b48; font-size: 17px; line-height: 1; text-decoration: none; vertical-align: middle; }
+.delete-order { display: inline-grid; width: 26px; height: 26px; place-items: center; padding: 0; border: 1px solid #f1e3df; border-radius: 8px; background: transparent; color: #a45b48; font-size: 17px; line-height: 1; text-decoration: none; vertical-align: middle; }
 .delete-order:hover { border-color: #eac6ba; background: #fff1ed; }
 .admin-table.dataTable thead .sorting, .admin-table.dataTable thead .sorting_asc, .admin-table.dataTable thead .sorting_desc { background-position: right 6px center !important; }
 .dataTables_wrapper { color: #718076 !important; font-size: 11px !important; }

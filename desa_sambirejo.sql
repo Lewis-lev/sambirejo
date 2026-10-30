@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2023 at 07:07 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Oct 29, 2026 at 03:23 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,44 +28,17 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `user_id` int(11) NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
   `username` varchar(100) NOT NULL,
-  `password` char(100) NOT NULL,
-  `nama_lengkap` varchar(100) NOT NULL,
-  `no_hp` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`user_id`, `username`, `password`, `nama_lengkap`, `no_hp`, `email`) VALUES
-(21, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', '087711760747', 'admin@mail.com'),
-(22, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'useeeeerrrrrr', '123123123', 'user@gmail.com');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `keranjang`
---
-
-CREATE TABLE `keranjang` (
-  `keranjang_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `tiket` varchar(100) NOT NULL,
-  `paket` varchar(100) NOT NULL,
-  `day` int(100) NOT NULL,
-  `price` bigint(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `keranjang`
---
-
-INSERT INTO `keranjang` (`keranjang_id`, `user_id`, `tiket`, `paket`, `day`, `price`) VALUES
-(50, 21, 'Paket Study', 'Paket Sambi B', 5, 900000),
-(51, 21, 'Room Mahika', 'Couple Room Mahika', 3, 1500000);
+INSERT INTO `admin` (`user_id`, `username`, `password`) VALUES
+(3, 'admin', '$2y$12$Vs4gcNUrlHaRNX9DFjn3ku/r/LCA8fTR9kCA562.bTgTYK.fa0liG');
 
 -- --------------------------------------------------------
 
@@ -74,27 +47,26 @@ INSERT INTO `keranjang` (`keranjang_id`, `user_id`, `tiket`, `paket`, `day`, `pr
 --
 
 CREATE TABLE `pesanan` (
-  `id` int(11) NOT NULL,
-  `kode` text NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `kode` varchar(20) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `no_hp` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `tiket` varchar(100) NOT NULL,
   `paket` varchar(100) NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp(),
-  `status` int(1) NOT NULL,
-  `kondisi` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+  `status` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `kondisi` tinyint(3) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Table structure for table `pict`
+-- Dumping data for table `pesanan`
 --
 
-CREATE TABLE `pict` (
-  `pict_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `pesanan` (`id`, `kode`, `nama`, `no_hp`, `email`, `tiket`, `paket`, `date`, `status`, `kondisi`) VALUES
+(1, 'P29135847', 'Madani Shofa', '123123123123', 'madanishofa@gmail.com', 'Jeep Breksi', 'Short Trip Atas', '2026-10-28 14:46:45', 1, 1),
+(2, 'P70985346', 'Madani Shofa', '123123123123', 'creasstore36@evoo.pm', 'Jeep Breksi', 'Medium Trip', '2026-10-28 15:25:52', 0, 0),
+(3, 'P51980642', 'Haji Makki Madani Shofa ', '0811518618515', 'muustore56@evoo.pm', 'Camping Mahika Ayu', 'Paket Relax', '2026-10-28 16:13:52', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -104,26 +76,17 @@ CREATE TABLE `pict` (
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- Indexes for table `keranjang`
---
-ALTER TABLE `keranjang`
-  ADD PRIMARY KEY (`keranjang_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `uq_admin_username` (`username`);
 
 --
 -- Indexes for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `pict`
---
-ALTER TABLE `pict`
-  ADD PRIMARY KEY (`pict_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uq_pesanan_kode` (`kode`),
+  ADD KEY `idx_pesanan_status` (`status`),
+  ADD KEY `idx_pesanan_kondisi` (`kondisi`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -133,35 +96,13 @@ ALTER TABLE `pict`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT for table `keranjang`
---
-ALTER TABLE `keranjang`
-  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pict`
---
-ALTER TABLE `pict`
-  MODIFY `pict_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `keranjang`
---
-ALTER TABLE `keranjang`
-  ADD CONSTRAINT `keranjang_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `admin` (`user_id`);
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

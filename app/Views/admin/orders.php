@@ -88,7 +88,10 @@ $page = $pages[$mode] ?? $pages['all'];
             <p>Gunakan pencarian untuk menemukan pesanan dengan cepat.</p>
         </div>
         <?php if (count($pesanan) > 0): ?>
-            <a class="admin-danger-link" href="<?= base_url($page['clear']) ?>" data-confirm="Hapus seluruh pesanan yang ada di tampilan ini? Tindakan ini tidak dapat dibatalkan."><span aria-hidden="true">⌫</span> Hapus semua</a>
+            <form class="admin-action-form" action="<?= base_url($page['clear']) ?>" method="post" data-confirm="Hapus seluruh pesanan yang ada di tampilan ini? Tindakan ini tidak dapat dibatalkan.">
+                <?= csrf_field() ?>
+                <button class="admin-danger-link" type="submit"><span aria-hidden="true">⌫</span> Hapus semua</button>
+            </form>
         <?php endif; ?>
     </div>
 
@@ -119,20 +122,39 @@ $page = $pages[$mode] ?? $pages['all'];
                             <td><strong class="package-name"><?= esc($row['tiket']) ?></strong><small class="package-type"><?= esc($row['paket']) ?></small></td>
                             <?php if ($mode === 'all'): ?><td class="order-date"><?= esc($row['date']) ?></td><?php endif; ?>
                             <?php if (! in_array($mode, ['paid', 'unpaid'], true)): ?>
-                                <td><a class="status-pill <?= (int) $row['status'] === 1 ? 'is-complete' : 'is-pending' ?>" href="<?= base_url($page['paidAction'] . $row['id']) ?>" aria-label="<?= (int) $row['status'] === 1 ? 'Tandai belum membayar' : 'Tandai sudah membayar' ?>: <?= esc($row['nama'], 'attr') ?>"><span aria-hidden="true"><?= (int) $row['status'] === 1 ? '✓' : '◷' ?></span><?= (int) $row['status'] === 1 ? 'Lunas' : 'Menunggu' ?></a></td>
+                                <td>
+                                    <form class="admin-action-form" action="<?= base_url($page['paidAction'] . $row['id']) ?>" method="post">
+                                        <?= csrf_field() ?>
+                                        <button class="status-pill <?= (int) $row['status'] === 1 ? 'is-complete' : 'is-pending' ?>" type="submit" aria-label="<?= (int) $row['status'] === 1 ? 'Tandai belum membayar' : 'Tandai sudah membayar' ?>: <?= esc($row['nama'], 'attr') ?>"><span aria-hidden="true"><?= (int) $row['status'] === 1 ? '✓' : '◷' ?></span><?= (int) $row['status'] === 1 ? 'Lunas' : 'Menunggu' ?></button>
+                                    </form>
+                                </td>
                             <?php endif; ?>
                             <?php if (! in_array($mode, ['visited', 'not-visited'], true)): ?>
-                                <td><a class="status-pill <?= (int) $row['kondisi'] === 1 ? 'is-complete' : 'is-neutral' ?>" href="<?= base_url($page['visitedAction'] . $row['id']) ?>" aria-label="<?= (int) $row['kondisi'] === 1 ? 'Tandai belum berkunjung' : 'Tandai sudah berkunjung' ?>: <?= esc($row['nama'], 'attr') ?>"><span aria-hidden="true"><?= (int) $row['kondisi'] === 1 ? '✓' : '·' ?></span><?= (int) $row['kondisi'] === 1 ? 'Selesai' : 'Terjadwal' ?></a></td>
+                                <td>
+                                    <form class="admin-action-form" action="<?= base_url($page['visitedAction'] . $row['id']) ?>" method="post">
+                                        <?= csrf_field() ?>
+                                        <button class="status-pill <?= (int) $row['kondisi'] === 1 ? 'is-complete' : 'is-neutral' ?>" type="submit" aria-label="<?= (int) $row['kondisi'] === 1 ? 'Tandai belum berkunjung' : 'Tandai sudah berkunjung' ?>: <?= esc($row['nama'], 'attr') ?>"><span aria-hidden="true"><?= (int) $row['kondisi'] === 1 ? '✓' : '·' ?></span><?= (int) $row['kondisi'] === 1 ? 'Selesai' : 'Terjadwal' ?></button>
+                                    </form>
+                                </td>
                             <?php endif; ?>
                             <td class="order-actions">
                                 <?php if (in_array($mode, ['paid', 'unpaid'], true)): ?>
-                                    <a class="status-pill <?= (int) $row['status'] === 1 ? 'is-complete' : 'is-pending' ?>" href="<?= base_url($page['paidAction'] . $row['id']) ?>" aria-label="<?= (int) $row['status'] === 1 ? 'Tandai belum membayar' : 'Tandai sudah membayar' ?>: <?= esc($row['nama'], 'attr') ?>"><?= (int) $row['status'] === 1 ? 'Lunas' : 'Tandai lunas' ?></a>
+                                    <form class="admin-action-form" action="<?= base_url($page['paidAction'] . $row['id']) ?>" method="post">
+                                        <?= csrf_field() ?>
+                                        <button class="status-pill <?= (int) $row['status'] === 1 ? 'is-complete' : 'is-pending' ?>" type="submit" aria-label="<?= (int) $row['status'] === 1 ? 'Tandai belum membayar' : 'Tandai sudah membayar' ?>: <?= esc($row['nama'], 'attr') ?>"><?= (int) $row['status'] === 1 ? 'Lunas' : 'Tandai lunas' ?></button>
+                                    </form>
                                 <?php elseif (in_array($mode, ['visited', 'not-visited'], true)): ?>
-                                    <a class="status-pill <?= (int) $row['kondisi'] === 1 ? 'is-complete' : 'is-neutral' ?>" href="<?= base_url($page['visitedAction'] . $row['id']) ?>" aria-label="<?= (int) $row['kondisi'] === 1 ? 'Tandai belum berkunjung' : 'Tandai sudah berkunjung' ?>: <?= esc($row['nama'], 'attr') ?>"><?= (int) $row['kondisi'] === 1 ? 'Selesai' : 'Tandai selesai' ?></a>
+                                    <form class="admin-action-form" action="<?= base_url($page['visitedAction'] . $row['id']) ?>" method="post">
+                                        <?= csrf_field() ?>
+                                        <button class="status-pill <?= (int) $row['kondisi'] === 1 ? 'is-complete' : 'is-neutral' ?>" type="submit" aria-label="<?= (int) $row['kondisi'] === 1 ? 'Tandai belum berkunjung' : 'Tandai sudah berkunjung' ?>: <?= esc($row['nama'], 'attr') ?>"><?= (int) $row['kondisi'] === 1 ? 'Selesai' : 'Tandai selesai' ?></button>
+                                    </form>
                                 <?php endif; ?>
-                                <a class="delete-order" href="<?= base_url($page['deleteAction'] . $row['id']) ?>" aria-label="Hapus pesanan <?= esc($row['kode'], 'attr') ?>" data-confirm="Hapus pesanan <?= esc($row['kode'], 'attr') ?> milik <?= esc($row['nama'], 'attr') ?>?">
-                                    <span aria-hidden="true">×</span>
-                                </a>
+                                <form class="admin-action-form" action="<?= base_url($page['deleteAction'] . $row['id']) ?>" method="post" data-confirm="Hapus pesanan <?= esc($row['kode'], 'attr') ?> milik <?= esc($row['nama'], 'attr') ?>?">
+                                    <?= csrf_field() ?>
+                                    <button class="delete-order" type="submit" aria-label="Hapus pesanan <?= esc($row['kode'], 'attr') ?>">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>

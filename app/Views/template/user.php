@@ -65,8 +65,8 @@
             </div>
         </div>
         <div class="site-container footer-bottom">
-            <span>© <?= date('Y') ?> Desa Wisata Sambirejo</span>
-            <span>Dibuat dengan bangga di Yogyakarta</span>
+            <span>© <?= date('Y') ?> shofa.</span>
+            <span>Made with passion</span>
         </div>
     </footer>
 </body>
